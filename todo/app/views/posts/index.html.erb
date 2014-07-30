@@ -1,0 +1,13 @@
+
+
+
+<h1>Items in the list</h1>
+<% @post.each do |item| %>
+<h2><%=link_to item.title, item %> </h2>
+<b>#<%=item.status %></b>
+<p><%=link_to "Edit", edit_post_path(item)%> 
+<%=link_to "mark",post_mark_path(item)  %>
+<%=link_to "Delete", item, :method => :delete %></p>
+<hr/>
+<%end%>
+<h3><%= link_to "Add a new task", new_post_path %>
