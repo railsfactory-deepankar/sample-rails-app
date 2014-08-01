@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :models
+
 # resources :posts
-
-resources :posts do
-
+root :to => 'homes#index'
+resources :posts do  
 get 'mark'
  
 end

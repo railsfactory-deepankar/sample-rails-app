@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Todo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -10,7 +11,12 @@
 <% flash.each do |key,value| %>
 <p><%=value%></p>
 <%end%>
-
+<% if model_signed_in? %>
+	You are currently signed in as <%=current_model.email %>, not you?
+<%=link_to "sign out", destroy_model_session_path, :method => :delete %>
+<%else%>
+<%= link_to "sign-up", new_model_registration_path%> or <%= link_to "sign-in", new_model_session_path %>
+<%end%>
 <%= yield %>
 
 

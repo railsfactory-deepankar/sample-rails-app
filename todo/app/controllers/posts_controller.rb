@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	def index
-		@post = Post.all
+		@post = Post.where(model_id: current_model.id)
 	end
 
 	def show
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.new(params[:post].permit(:title,:status))
+		@post.model = current_model
 		if @post.save
 	           redirect_to posts_path,:notice => "Your post was saved"
 	        else
